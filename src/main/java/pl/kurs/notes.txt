@@ -1,0 +1,11 @@
+Praca domowa:
+Zaprojektuj system do zarządzania kursami online, w którym:
+Istnieją kursy, każde z unikalnym tytułem, opisem i instruktorem prowadzącym(unikalny tylko tytul).
+Każdy kurs ma listę modułów, a każdy moduł zawiera kilka lekcji.
+Użytkownicy mogą zapisywać się na kursy i mieć dostęp do ich modułów oraz lekcji.
+Instruktorzy mogą prowadzić wiele kursów, ale każdy kurs ma tylko jednego instruktora.
+Użytkownicy mogą oceniać kursy oraz dodawać opinie.
+
+Całość z uzyciem JpaRepository, mozesz pisac custom query zarowno po nazwie funkcji jak i z uzyciem adnotacji @Query
+Mozesz dodac serwisy ktore beda odpowiedzialne za dodawanie np. kursow (nie bedzie operowal bezposrednio na repository) - patrz funkcja saveDriver w DriverService
+Calosc (runner) jako klasa np. serwisowa lub runnerowa ktora bedzie wywolywana z maina
