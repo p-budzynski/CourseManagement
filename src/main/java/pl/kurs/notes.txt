@@ -9,3 +9,12 @@ Użytkownicy mogą oceniać kursy oraz dodawać opinie.
 Całość z uzyciem JpaRepository, mozesz pisac custom query zarowno po nazwie funkcji jak i z uzyciem adnotacji @Query
 Mozesz dodac serwisy ktore beda odpowiedzialne za dodawanie np. kursow (nie bedzie operowal bezposrednio na repository) - patrz funkcja saveDriver w DriverService
 Calosc (runner) jako klasa np. serwisowa lub runnerowa ktora bedzie wywolywana z maina
+
+
+napisałem metody:
+
+- wypisz użytkowników zapisanych na dany kurs
+- wypisz komentarze danego kursu
+- wypisz średnią ocenę danego kursu
+- wypisz moduły danego kursu
+- wypisz lekcje danego modułu

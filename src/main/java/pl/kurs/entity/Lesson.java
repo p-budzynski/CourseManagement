@@ -13,7 +13,7 @@ import lombok.Setter;
 public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_lesson")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
@@ -27,4 +27,10 @@ public class Lesson {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Lesson{" +
+               "name='" + name + '\'' +
+               '}';
+    }
 }

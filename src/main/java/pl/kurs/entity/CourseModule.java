@@ -16,20 +16,28 @@ import java.util.Set;
 public class CourseModule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_course_modules")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "name")
     private String name;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
-    @OneToMany(mappedBy = "courseModule", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
+    @OneToMany(mappedBy = "courseModule", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE})
     private Set<Lesson> lessons = new HashSet<>();
 
     public CourseModule(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "CourseModule{" +
+               "name='" + name + '\'' +
+               ", course=" + course +
+               '}';
     }
 }

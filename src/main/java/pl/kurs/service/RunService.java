@@ -1,6 +1,5 @@
 package pl.kurs.service;
 
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.kurs.entity.*;
@@ -9,7 +8,6 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
 public class RunService {
     private final CourseService courseService;
     private final InstructorService instructorService;
@@ -67,6 +65,7 @@ public class RunService {
         module2.setCourse(course1);
         course1.setInstructor(instructor1);
         course1.getUsers().add(user1);
+        user1.getCourses().add(course1);
         course1.getOpinions().addAll(List.of(opinion1, opinion2));
         opinion1.setCourse(course1);
         opinion2.setCourse(course1);
@@ -76,6 +75,8 @@ public class RunService {
         module4.setCourse(course2);
         course2.setInstructor(instructor1);
         course2.getUsers().addAll(List.of(user1, user2));
+        user1.getCourses().add(course2);
+        user2.getCourses().add(course2);
         course2.getOpinions().addAll(List.of(opinion3, opinion4));
         opinion3.setCourse(course2);
         opinion4.setCourse(course2);
@@ -86,13 +87,37 @@ public class RunService {
         course3.getOpinions().add(opinion5);
         opinion5.setCourse(course3);
 
+        module1.getLessons().addAll(List.of(lesson1, lesson2, lesson3));
+        lesson1.setCourseModule(module1);
+        lesson2.setCourseModule(module1);
+        lesson3.setCourseModule(module1);
+
+        module2.getLessons().addAll(List.of(lesson4, lesson5));
+        lesson4.setCourseModule(module2);
+        lesson5.setCourseModule(module2);
+
+        module3.getLessons().addAll(List.of(lesson6, lesson7, lesson8));
+        lesson6.setCourseModule(module3);
+        lesson7.setCourseModule(module3);
+        lesson8.setCourseModule(module3);
+
+        module4.getLessons().add(lesson9);
+        lesson9.setCourseModule(module4);
+
+        module5.getLessons().addAll(List.of(lesson10, lesson11));
+        lesson10.setCourseModule(module5);
+        lesson11.setCourseModule(module5);
+
         opinionService.saveOpinion(opinion1);
         opinionService.saveOpinion(opinion2);
         opinionService.saveOpinion(opinion3);
         opinionService.saveOpinion(opinion4);
         opinionService.saveOpinion(opinion5);
         courseService.saveCourse(course1);
-
+        courseService.saveCourse(course2);
+        courseService.saveCourse(course3);
+        userService.saveUser(user1);
+        userService.saveUser(user2);
 
     }
 

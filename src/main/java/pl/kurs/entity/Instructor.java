@@ -17,7 +17,7 @@ import java.util.Set;
 public class Instructor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_instructor")
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "first_name", nullable = false)
@@ -37,5 +37,14 @@ public class Instructor {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    @Override
+    public String toString() {
+        return "Instructor{" +
+               "firstName='" + firstName + '\'' +
+               ", lastName='" + lastName + '\'' +
+               ", email='" + email + '\'' +
+               '}';
     }
 }

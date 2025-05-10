@@ -17,16 +17,17 @@ import java.time.LocalDateTime;
 public class Opinion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     @Column(name = "opinion_date", nullable = false)
     private LocalDateTime opinionDate;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH)
     @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
@@ -41,5 +42,16 @@ public class Opinion {
         this.user = user;
         this.content = content;
         this.rating = rating;
+    }
+
+    @Override
+    public String toString() {
+        return "Opinion{" +
+               "opinionDate=" + opinionDate +
+               ", user=" + user.getFirstName() +
+               ", course=" + course.getName() +
+               ", content='" + content + '\'' +
+               ", rating=" + rating +
+               '}';
     }
 }
