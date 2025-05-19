@@ -4,10 +4,7 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import pl.kurs.entity.Course;
-import pl.kurs.entity.Opinion;
 import pl.kurs.repository.CourseRepository;
-
-import java.util.Set;
 
 @Service
 @RequiredArgsConstructor
@@ -24,13 +21,13 @@ public class CourseService {
         courseRepository.deleteById(id);
     }
 
-    public void findByIdUsersJoinFetch(Long id) {
+    public void findCourseByIdWithUsers(Long id) {
         courseRepository.findCourseByIdWithUsers(id)
                 .ifPresent(course -> course.getUsers()
                         .forEach(System.out::println));
     }
 
-    public void findByIdOpinionsJoinFetch(Long id) {
+    public void findCourseByIdWithOpinions(Long id) {
         courseRepository.findCourseByIdWithOpinions(id)
                 .ifPresent(course -> course.getOpinions()
                         .forEach(System.out::println));
@@ -41,13 +38,13 @@ public class CourseService {
         System.out.println("Average rating: " + (average != null ? average : "No reviews for this course."));
     }
 
-    public void findByIdModulesJoinFetch(Long id) {
+    public void findCourseByIdWithCourseModules(Long id) {
         courseRepository.findCourseByIdWithCourseModules(id)
                 .ifPresent(course -> course.getCourseModules()
                         .forEach(System.out::println));
     }
 
-    public void findByIdLessonsJoinFetch(Long id) {
+    public void findCourseModuleByIdWithLessons(Long id) {
         courseRepository.findCourseModuleByIdWithLessons(id)
                 .ifPresent(courseModule -> courseModule.getLessons()
                         .forEach(System.out::println));

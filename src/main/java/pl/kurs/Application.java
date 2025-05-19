@@ -3,7 +3,6 @@ package pl.kurs;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
-import pl.kurs.repository.CourseRepository;
 import pl.kurs.service.CourseService;
 import pl.kurs.service.RunService;
 
@@ -20,22 +19,22 @@ public class Application {
 
         System.out.println("-------------------------- S T A R T ---------------------------");
 
-        courseService.findByIdUsersJoinFetch(1L);
+        courseService.findCourseByIdWithUsers(1L);
         System.out.println("-------------------------------------------------------------");
 
-        courseService.findByIdUsersJoinFetch(2L);
+        courseService.findCourseByIdWithUsers(2L);
         System.out.println("--------------------------------------------------------------");
 
-        courseService.findByIdOpinionsJoinFetch(1L);
+        courseService.findCourseByIdWithOpinions(1L);
         System.out.println("---------------------------------------------------------------");
 
         courseService.printAverageRating(1L);
         System.out.println("---------------------------------------------------------------");
 
-        courseService.findByIdModulesJoinFetch(1L);
+        courseService.findCourseByIdWithCourseModules(1L);
         System.out.println("---------------------------------------------------------------");
 
-        courseService.findByIdLessonsJoinFetch(1L);
+        courseService.findCourseModuleByIdWithLessons(1L);
 
         System.out.println("-------------------------- E N D -------------------------------");
     }

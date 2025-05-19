@@ -12,7 +12,7 @@ public interface CourseRepository extends JpaRepository<Course, Long> {
     @Query("select c from Course c left join fetch c.users where c.id = :id")
     Optional<Course> findCourseByIdWithUsers(Long id);
 
-    @Query("select c from Course c left join fetch c.opinions where c.id = :id")
+    @Query("select c from Course c left join fetch c.opinions o left join fetch o.user where c.id = :id")
     Optional<Course> findCourseByIdWithOpinions(Long id);
 
     @Query("select avg(o.rating) from Opinion o where o.course.id = :id")
